@@ -36,7 +36,7 @@ const Contact = () => {
               <CardContent className="p-6">
                 <Phone className="text-red-600 mx-auto mb-4" size={48} />
                 <h3 className="text-lg font-semibold mb-2">Call Us</h3>
-                <p className="text-gray-600">0795 303 013</p>
+                <p className="text-gray-600">0791 954 988</p>
               </CardContent>
             </Card>
             
@@ -165,7 +165,7 @@ const Contact = () => {
                       <Phone className="text-blue-600 mt-1" size={20} />
                       <div>
                         <h4 className="font-semibold text-gray-900">Contact</h4>
-                        <p className="text-gray-600">0795 303 013</p>
+                        <p className="text-gray-600">0791 954 988</p>
                         <p className="text-gray-600">info@inzovu.com</p>
                       </div>
                     </div>
@@ -220,7 +220,7 @@ const Contact = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-white text-green-600 hover:bg-gray-100">
-              Call Now: 0795 303 013
+              Call Now: 0791 954 988
             </Button>
             <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-green-600">
               WhatsApp Us

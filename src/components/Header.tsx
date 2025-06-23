@@ -21,7 +21,7 @@ const Header = () => {
               <a href="tel:0795303013" className="flex items-center gap-2 hover:underline transition whitespace-nowrap">
                 <Phone size={20} className="opacity-80" />
                 <span className="font-semibold">Call:</span>
-                <span className="tracking-wide">0795 303 013</span>
+                <span className="tracking-wide">0791 954 988</span>
               </a>
               <span className="hidden sm:inline-block h-6 border-l border-red-200 mx-3"></span>
               <a href="https://maps.google.com/?q=Saint+Ignatius+Primary+School,+KG+19+Ave,+Kigali" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:underline transition whitespace-nowrap">
@@ -38,12 +38,12 @@ const Header = () => {
         </div>
       </header>
       {/* Main Navigation - sticky at top */}
-      <nav className="bg-red-600 shadow-md sticky top-0 z-50">
+      <nav className="bg-red-600 shadow-md sticky top-0 z-50 text-white">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             
             {/* Logo */}
-            <Link to="/" className="flex items-center space-x-2 group transition-transform duration-300 hover:scale-105">
+            <Link to="/" className="flex items-center space-x-2 group transition-transform duration-300 hover:scale-105 text-white">
               <div className="w-10 h-10 bg-gradient-to-r from-red-500 to-green-500 rounded-lg flex items-center justify-center shadow-md">
                 <span className="text-white font-bold text-lg">I</span>
               </div>
@@ -67,8 +67,8 @@ const Header = () => {
                   to={path}
                   className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 ${
                     location.pathname === path
-                      ? "text-red-600 bg-red-50 shadow-inner"
-                      : "text-gray-700 hover:text-red-600 hover:bg-red-50"
+                      ? "bg-white/20 shadow-inner text-white"
+                      : "text-white hover:bg-white/10 hover:text-yellow-200"
                   }`}
                 >
                   {label}
@@ -79,7 +79,7 @@ const Header = () => {
             {/* Mobile menu button */}
             <div className="md:hidden">
               <button
-                className="text-gray-700 hover:text-red-600 transition-transform hover:scale-110 focus:outline-none"
+                className="text-white hover:text-yellow-200 transition-transform hover:scale-110 focus:outline-none"
                 onClick={() => setMobileMenuOpen((open) => !open)}
                 aria-label="Open menu"
                 aria-expanded={mobileMenuOpen}
@@ -96,7 +96,7 @@ const Header = () => {
         <div className="md:hidden fixed inset-0 z-40 bg-black/40" onClick={() => setMobileMenuOpen(false)}></div>
       )}
       <div
-        className={`md:hidden fixed top-[56px] left-1/2 -translate-x-1/2 w-[95vw] max-w-xs z-50 transition-all duration-300 ${mobileMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-8 opacity-0 pointer-events-none'} bg-white shadow-lg rounded-xl border border-red-200`}
+        className={`md:hidden fixed top-[56px] right-0 w-[90vw] max-w-xs z-50 transition-all duration-300 ${mobileMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-8 opacity-0 pointer-events-none'} bg-white shadow-lg rounded-l-xl border border-red-200`}
         style={{ minHeight: mobileMenuOpen ? 'auto' : 0 }}
       >
         <div className="flex flex-col items-center py-2 gap-1">
@@ -112,8 +112,8 @@ const Header = () => {
               to={path}
               className={`w-full text-center px-2 py-2 rounded-md text-[15px] font-medium transition-all duration-200 ${
                 location.pathname === path
-                  ? "text-red-600 bg-red-50 shadow-inner"
-                  : "text-gray-700 hover:text-red-600 hover:bg-red-50"
+                  ? "bg-red-100 shadow-inner text-red-600"
+                  : "text-black hover:bg-red-50 hover:text-red-600"
               }`}
               onClick={() => setMobileMenuOpen(false)}
             >

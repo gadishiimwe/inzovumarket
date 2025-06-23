@@ -153,7 +153,7 @@ const About = () => {
           <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 max-w-md mx-auto">
             <h3 className="text-lg font-semibold mb-2">Visit Us</h3>
             <p className="mb-4">Opp. Saint Ignatius Primary School, KG 19 Ave, Kigali</p>
-            <p className="text-lg font-semibold">📞 0795 303 013</p>
+            <p className="text-lg font-semibold">📞 0791 954 988</p>
           </div>
         </div>
       </section>
