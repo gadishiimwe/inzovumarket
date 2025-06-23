@@ -1,41 +1,44 @@
 import { Phone, MapPin, Menu } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const Header = () => {
   const location = useLocation();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
   return (
-    <header className="sticky top-0 z-50">
-      {/* Contact Bar */}
-      <div className="bg-gradient-to-r from-red-600 via-red-500 to-green-600 text-white py-2 shadow-md">
-        <div className="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center text-xs md:text-sm animate-fade-in-down">
-          <div className="flex items-center gap-4 mb-2 sm:mb-0">
-            <a href="tel:0795303013" className="flex items-center gap-1 hover:underline transition">
-              <Phone size={18} className="opacity-80" />
-              <span className="font-semibold">Call:</span>
-              <span className="tracking-wide">0795 303 013</span>
-            </a>
-            <span className="hidden sm:inline-block h-4 border-l border-white/30 mx-2"></span>
-            <a href="https://maps.google.com/?q=Saint+Ignatius+Primary+School,+KG+19+Ave,+Kigali" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:underline transition">
-              <MapPin size={18} className="opacity-80" />
-              <span className="font-semibold">Visit:</span>
-              <span className="tracking-wide">Opp. Saint Ignatius Primary School, KG 19 Ave, Kigali</span>
-            </a>
-          </div>
-          <div className="flex items-center gap-2 font-semibold bg-white/10 rounded-full px-4 py-1 shadow-sm border border-white/20">
-            <span className="text-white drop-shadow-sm">We Make Shopping</span>
-            <span className="underline decoration-white decoration-2 underline-offset-4 text-yellow-200 font-bold">Easy</span>
+    <>
+      <header>
+        {/* Contact Bar */}
+        <div className="bg-white text-red-600 py-2 border-b border-red-100 shadow-sm">
+          <div className="container mx-auto px-2 flex flex-col sm:flex-row justify-between items-center text-xs md:text-sm animate-fade-in-down gap-1 sm:gap-0">
+            {/* Hide contact info on mobile, show only slogan */}
+            <div className="hidden sm:flex flex-row items-center gap-6 mb-1 sm:mb-0 w-full sm:w-auto text-[15px]">
+              <a href="tel:0795303013" className="flex items-center gap-2 hover:underline transition whitespace-nowrap">
+                <Phone size={20} className="opacity-80" />
+                <span className="font-semibold">Call:</span>
+                <span className="tracking-wide">0795 303 013</span>
+              </a>
+              <span className="hidden sm:inline-block h-6 border-l border-red-200 mx-3"></span>
+              <a href="https://maps.google.com/?q=Saint+Ignatius+Primary+School,+KG+19+Ave,+Kigali" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:underline transition whitespace-nowrap">
+                <MapPin size={20} className="opacity-80" />
+                <span className="font-semibold">Visit:</span>
+                <span className="tracking-wide">Opp. Saint Ignatius Primary School, KG 19 Ave, Kigali</span>
+              </a>
+            </div>
+            <div className="flex items-center gap-2 font-semibold bg-red-50 rounded-full px-5 py-1 shadow border border-red-100 text-sm mt-1 sm:mt-0 w-full justify-center sm:w-auto">
+              <span className="text-red-600 drop-shadow-sm">We Make Shopping</span>
+              <span className="underline decoration-red-600 decoration-2 underline-offset-4 text-yellow-600 font-bold">Easy</span>
+            </div>
           </div>
         </div>
-      </div>
-
-      {/* Main Navigation */}
-      <nav className="bg-white shadow-md backdrop-blur-lg">
+      </header>
+      {/* Main Navigation - sticky at top */}
+      <nav className="bg-red-600 shadow-md sticky top-0 z-50">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             
@@ -75,7 +78,12 @@ const Header = () => {
 
             {/* Mobile menu button */}
             <div className="md:hidden">
-              <button className="text-gray-700 hover:text-red-600 transition-transform hover:scale-110">
+              <button
+                className="text-gray-700 hover:text-red-600 transition-transform hover:scale-110 focus:outline-none"
+                onClick={() => setMobileMenuOpen((open) => !open)}
+                aria-label="Open menu"
+                aria-expanded={mobileMenuOpen}
+              >
                 <Menu size={24} />
               </button>
             </div>
@@ -83,7 +91,38 @@ const Header = () => {
           </div>
         </div>
       </nav>
-    </header>
+      {/* Mobile Dropdown Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden fixed inset-0 z-40 bg-black/40" onClick={() => setMobileMenuOpen(false)}></div>
+      )}
+      <div
+        className={`md:hidden fixed top-[56px] left-1/2 -translate-x-1/2 w-[95vw] max-w-xs z-50 transition-all duration-300 ${mobileMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-8 opacity-0 pointer-events-none'} bg-white shadow-lg rounded-xl border border-red-200`}
+        style={{ minHeight: mobileMenuOpen ? 'auto' : 0 }}
+      >
+        <div className="flex flex-col items-center py-2 gap-1">
+          {[
+            { path: "/", label: "Home" },
+            { path: "/about", label: "About Us" },
+            { path: "/products", label: "Products & Services" },
+            { path: "/gallery", label: "Gallery" },
+            { path: "/contact", label: "Contact" },
+          ].map(({ path, label }) => (
+            <Link
+              key={path}
+              to={path}
+              className={`w-full text-center px-2 py-2 rounded-md text-[15px] font-medium transition-all duration-200 ${
+                location.pathname === path
+                  ? "text-red-600 bg-red-50 shadow-inner"
+                  : "text-gray-700 hover:text-red-600 hover:bg-red-50"
+              }`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {label}
+            </Link>
+          ))}
+        </div>
+      </div>
+    </>
   );
 };
 
