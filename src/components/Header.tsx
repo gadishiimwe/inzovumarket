@@ -12,20 +12,24 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50">
       {/* Contact Bar */}
-      <div className="bg-red-600 text-white py-2 shadow-md">
-        <div className="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center text-sm animate-fade-in-down">
+      <div className="bg-gradient-to-r from-red-600 via-red-500 to-green-600 text-white py-2 shadow-md">
+        <div className="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center text-xs md:text-sm animate-fade-in-down">
           <div className="flex items-center gap-4 mb-2 sm:mb-0">
-            <div className="flex items-center gap-2">
-              <Phone size={16} />
-              <span>Call: 0795 303 013</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <MapPin size={16} />
-              <span>Opp. Saint Ignatius Primary School, KG 19 Ave, Kigali</span>
-            </div>
+            <a href="tel:0795303013" className="flex items-center gap-1 hover:underline transition">
+              <Phone size={18} className="opacity-80" />
+              <span className="font-semibold">Call:</span>
+              <span className="tracking-wide">0795 303 013</span>
+            </a>
+            <span className="hidden sm:inline-block h-4 border-l border-white/30 mx-2"></span>
+            <a href="https://maps.google.com/?q=Saint+Ignatius+Primary+School,+KG+19+Ave,+Kigali" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:underline transition">
+              <MapPin size={18} className="opacity-80" />
+              <span className="font-semibold">Visit:</span>
+              <span className="tracking-wide">Opp. Saint Ignatius Primary School, KG 19 Ave, Kigali</span>
+            </a>
           </div>
-          <div className="font-medium">
-            We Make Shopping <span className="underline decoration-white">Easy</span>
+          <div className="flex items-center gap-2 font-semibold bg-white/10 rounded-full px-4 py-1 shadow-sm border border-white/20">
+            <span className="text-white drop-shadow-sm">We Make Shopping</span>
+            <span className="underline decoration-white decoration-2 underline-offset-4 text-yellow-200 font-bold">Easy</span>
           </div>
         </div>
       </div>
