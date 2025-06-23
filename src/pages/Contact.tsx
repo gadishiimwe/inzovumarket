@@ -177,16 +177,29 @@ const Contact = () => {
               <Card>
                 <CardContent className="p-8">
                   <h3 className="text-2xl font-bold text-gray-900 mb-6">Find Us</h3>
-                  <div className="bg-gray-200 h-64 rounded-lg flex items-center justify-center">
-                    <div className="text-center text-gray-500">
-                      <MapPin size={48} className="mx-auto mb-2" />
-                      <p>Interactive Map</p>
-                      <p className="text-sm">KG 19 Ave, Kigali</p>
-                    </div>
+                  <div className="h-64 rounded-lg overflow-hidden">
+                    <iframe
+                      title="Saint Ignatius Primary School Map"
+                      src="https://www.google.com/maps?q=Saint+Ignatius+Primary+School,+KG+19+Ave,+Kigali,+Rwanda&output=embed"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowFullScreen={true}
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                    ></iframe>
                   </div>
                   <div className="mt-4">
-                    <Button className="w-full bg-green-600 hover:bg-green-700 text-white">
-                      Get Directions
+                    <Button className="w-full bg-green-600 hover:bg-green-700 text-white"
+                      asChild
+                    >
+                      <a
+                        href="https://www.google.com/maps/dir/?api=1&destination=Saint+Ignatius+Primary+School,+KG+19+Ave,+Kigali,+Rwanda"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Get Directions
+                      </a>
                     </Button>
                   </div>
                 </CardContent>

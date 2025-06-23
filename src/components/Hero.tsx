@@ -1,4 +1,3 @@
-
 import { ReactNode } from "react";
 
 interface HeroProps {
@@ -20,7 +19,7 @@ const Hero = ({ backgroundImage, title, subtitle, children, height = "md" }: Her
     <div 
       className={`relative ${heightClasses[height]} flex items-center justify-center overflow-hidden`}
       style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${backgroundImage})`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${backgroundImage}")`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat"
